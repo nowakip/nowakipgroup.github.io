@@ -60,7 +60,7 @@ a:focus, button:focus, .btn:focus {
 
 /* Force the hero logo smaller and inline with text */
 .hero-logo {
-  width: 96px !important;
+  width: 130px !important;
   height: auto !important;
   display: block;
 }
