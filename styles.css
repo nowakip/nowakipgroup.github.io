@@ -70,7 +70,7 @@ a:focus, button:focus, .btn:focus {
 
 /* Make the logo as tall as two headline lines (no overlap) */
 .hero-logo {
-  height: calc(var(--hero-fs) * 2.3); /* 2 lines * ~1.15 line-height */
+  height: calc(var(--hero-fs) * 2.40);
   width: auto;
   display: block;
   object-fit: contain;
