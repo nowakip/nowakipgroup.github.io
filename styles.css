@@ -141,4 +141,3 @@ a:focus, button:focus, .btn:focus { outline: 3px solid var(--focus); outline-off
   .hero-logo { height: auto; width: 160px; margin-bottom: 2px; }
   .hero-grid > div { max-width: 40ch; }
 }
- 
