@@ -4,14 +4,21 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Nowak IP Group — Intellectual Property & Litigation</title>
-  <meta name="description" content="IP counsel that moves business forward: patents, trademarks, and disputes." />
+  <meta name="description" content="IP counsel that moves business forward. Patents, trademarks, and disputes with business-first strategy." />
 
-  <!-- Open Graph (good for sharing once public) -->
+  <!-- Keep the site out of Google while you're still building. Remove this before launch. -->
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Open Graph (nice when you share links later) -->
   <meta property="og:title" content="Nowak IP Group — IP & Litigation" />
   <meta property="og:description" content="IP counsel that moves business forward. Patents • Trademarks • Disputes." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://your-domain-here/" />
   <meta property="og:image" content="/logo.png" />
+
+  <!-- Favicons (add files later; link tags are harmless until then) -->
+  <link rel="icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 
   <!-- Font -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,16 +26,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="favicon.ico" />
 </head>
 <body>
-  <header class="site-header container">
+  <!-- Accessibility: keyboard users can jump to content -->
+  <a class="skip-link" href="#home">Skip to content</a>
+
+  <header class="site-header container" role="banner">
     <a class="brand" href="#home" aria-label="Nowak IP Group home">
-      <!-- Optional logo image; remove this <img> if you don't have logo.png yet -->
+      <!-- Optional logo; remove <img> if you don't have logo.png yet -->
       <img src="logo.png" alt="Nowak IP Group" class="logo" />
       <span class="wordmark">Nowak IP Group</span>
     </a>
-    <nav class="nav">
+    <nav class="nav" role="navigation" aria-label="Primary">
       <a href="#services">Services</a>
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
@@ -37,10 +46,10 @@
     </nav>
   </header>
 
-  <main id="home">
+  <main id="home" class="main" role="main">
     <!-- HERO -->
-    <section class="hero container">
-      <h1>IP counsel that moves business forward.</h1>
+    <section class="hero container" aria-labelledby="hero-title">
+      <h1 id="hero-title">IP counsel that moves business forward.</h1>
       <p class="lede">Patents • Trademarks • Disputes</p>
       <div class="cta-row">
         <a class="btn primary" href="#contact">Request a consult</a>
@@ -49,8 +58,8 @@
     </section>
 
     <!-- SERVICES -->
-    <section id="services" class="section container">
-      <h2>Services</h2>
+    <section id="services" class="section container" aria-labelledby="services-title">
+      <h2 id="services-title">Services</h2>
       <div class="cards">
         <article class="card">
           <h3>Patent Litigation</h3>
@@ -68,11 +77,11 @@
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="section container about">
-      <h2>About</h2>
+    <section id="about" class="section container about" aria-labelledby="about-title">
+      <h2 id="about-title">About</h2>
       <div class="about-wrap">
         <div class="about-text">
-          <p><strong>Nick Nowak</strong> is a trial-tested intellectual property lawyer with 20+ years of experience representing innovators in the medical device, electronics, software, and cellular industries. His practice focuses on patent litigation, trademarks &amp; brand protection, and business-forward IP strategy.</p>
+          <p><strong>Nick Nowak</strong> is a trial-tested intellectual property lawyer with 20+ years representing innovators in medical devices, electronics, software, and cellular technology. The practice focuses on patent litigation, trademarks &amp; brand protection, and business-forward IP strategy.</p>
           <ul class="bullets">
             <li>Lead and co-lead roles in U.S. district courts and ITC matters</li>
             <li>Hands-on brand enforcement and anti-counterfeiting programs</li>
@@ -80,7 +89,7 @@
           </ul>
         </div>
 
-        <!-- Optional headshot: replace placeholder with an <img> or remove this block -->
+        <!-- Optional headshot: swap placeholder for an <img> or remove block -->
         <div class="about-photo">
           <div class="photo-placeholder">Your Photo</div>
           <!-- <img src="headshot.jpg" alt="Nick Nowak" class="photo"> -->
@@ -89,31 +98,45 @@
     </section>
 
     <!-- EXPERIENCE -->
-    <section id="experience" class="section container">
-      <h2>Representative Experience</h2>
+    <section id="experience" class="section container" aria-labelledby="exp-title">
+      <h2 id="exp-title">Representative Experience</h2>
       <ul class="bullets">
         <li>Lead and co-lead counsel in complex patent disputes across U.S. district courts and the ITC.</li>
         <li>Trademark enforcement and counterfeit takedowns across major e-commerce marketplaces.</li>
         <li>Advising startups and public companies on IP strategy, transactions, and risk.</li>
       </ul>
-      <div class="industries">
+      <div class="industries" aria-label="Industry Focus">
         <h3 class="industries-title">Industry Focus</h3>
         <p class="industry-tags">Electronics / Consumer Tech • Medical Devices / Life Sciences • Telecommunications • Retail / E-commerce • Consumer Goods / Hardware</p>
       </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="section container contact">
-      <h2>Contact</h2>
-      <p><a class="btn primary" href="mailto:info@your-domain-here">Email Now</a></p>
+    <section id="contact" class="section container contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <p><a class="btn primary" href="mailto:info@your-domain-here?subject=Consult%20Inquiry%20—%20Nowak%20IP%20Group">Email Now</a></p>
       <p class="muted">Or connect on <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>.</p>
       <p class="small">Do not send confidential or privileged information. This site is informational only and does not create an attorney-client relationship.</p>
     </section>
   </main>
 
-  <footer class="site-footer container">
-    <p>© <span id="year"></span> Nowak IP Group. All rights reserved.</p>
+  <footer class="site-footer container" role="contentinfo">
+    <p>© <span id="year"></span> Nowak IP Group. All rights reserved. <span class="sep">•</span> <a href="#contact">Contact</a></p>
   </footer>
+
+  <!-- Structured data for better SEO when you launch -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LegalService",
+    "name": "Nowak IP Group",
+    "url": "https://your-domain-here/",
+    "areaServed": "US",
+    "legalName": "Nowak IP Group",
+    "description": "Intellectual property counsel: patent litigation, trademarks, and business-first IP strategy.",
+    "sameAs": ["https://www.linkedin.com/"]
+  }
+  </script>
 
   <script>
     // Set current year in footer
