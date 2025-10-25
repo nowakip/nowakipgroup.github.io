@@ -2,9 +2,9 @@
 :root {
   --bg: #0b0d10;       /* page background */
   --panel: #12151a;    /* card/nav background */
-  --text: #e8eef7;     /* primary text (also logo color) */
+  --text: #e8eef7;     /* primary text (and logo color) */
   --muted: #a9b3c1;    /* secondary text */
-  --brand: #5da0ff;    /* accent (links/buttons if used) */
+  --brand: #5da0ff;    /* optional accent */
   --brand-ink: #0b1a2b;
   --link: #94c0ff;     /* link hover */
   --focus: #89b8ff;    /* focus ring color */
@@ -49,33 +49,34 @@ a:focus, button:focus, .btn:focus {
 /* -------------------- HERO -------------------- */
 .hero { padding: 86px 0 54px; }
 
-/* Top-aligned logo that spans the height of a two-line headline */
+/* Grid: logo left, text right */
 .hero-grid {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  column-gap: 28px;
-  align-items: start;               /* TOP align with first line (Option B) */
+  column-gap: 32px;    /* space between logo and text */
+  align-items: start;  /* top-align with the first headline line (Option B) */
 }
 
-/* Use a CSS variable for headline size so logo can scale to two lines */
+/* Headline sizing (shared var so logo can sync to its height) */
 .hero h1 {
-  --hero-fs: clamp(40px, 6vw, 62px);  /* adjust overall headline size here */
+  --hero-fs: clamp(40px, 6vw, 62px);  /* global hero font-size */
   font-size: var(--hero-fs);
   line-height: 1.12;                  /* compact, premium */
   margin: 0 0 12px;
 }
 
-/* Make the logo as tall as ~two lines of the headline block */
+/* Constrain text width so headline wraps to two lines cleanly */
+.hero-grid > div { max-width: 24ch; }
+
+/* Make the logo as tall as two headline lines (no overlap) */
 .hero-logo {
-  height: calc(var(--hero-fs) * 2.24);  /* 2 lines * line-height (≈1.12 * 2) */
+  height: calc(var(--hero-fs) * 2.3); /* 2 lines * ~1.15 line-height */
   width: auto;
   display: block;
   object-fit: contain;
 }
 
-/* Keep the text column from stretching too wide so wrapping is clean */
-.hero-grid > div { max-width: 32ch; }
-
+/* Tagline */
 .lede {
   font-size: clamp(18px, 2.3vw, 20px);
   color: var(--muted);
@@ -160,7 +161,7 @@ a:focus, button:focus, .btn:focus {
   }
   .hero-logo {
     height: auto;
-    width: 160px;              /* tidy, left-aligned on small screens */
+    width: 160px;      /* neat, left-aligned on small screens */
     margin-bottom: 2px;
   }
   .hero-grid > div { max-width: 40ch; }
