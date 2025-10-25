@@ -1,71 +1,97 @@
-/* Minimal, fast, and readable */
-:root {
-  --bg: #0b0d10;       /* page background */
-  --panel: #12151a;    /* card/nav background */
-  --text: #e8eef7;     /* primary text */
-  --muted: #a9b3c1;    /* secondary text */
-  --brand: #5da0ff;    /* accent */
-  --brand-ink: #0b1a2b;
-  --link: #94c0ff;     /* link hover */
-}
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  font: 16px/1.6 Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nowak IP Group — Intellectual Property & Litigation</title>
+  <meta name="description" content="IP counsel that moves business forward: patents, trademarks, and disputes." />
 
-.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+  <!-- Open Graph (optional but good for sharing later) -->
+  <meta property="og:title" content="Nowak IP Group — IP & Litigation" />
+  <meta property="og:description" content="IP counsel that moves business forward. Patents • Trademarks • Disputes." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://your-domain-here/" />
+  <meta property="og:image" content="/logo.png" />
 
-/* Header */
-.site-header { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
-.brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); }
-.logo { height: 40px; width: auto; }
-.wordmark { font-weight: 700; letter-spacing: 0.2px; }
-.nav a { color: var(--text); text-decoration: none; margin-left: 18px; opacity: 0.9; }
-.nav a:hover { opacity: 1; }
-.icon-link { opacity: 0.75; }
-.icon-link:hover { opacity: 1; }
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-/* Hero */
-.hero { padding: 72px 0 48px; }
-.hero h1 { font-size: clamp(32px, 5vw, 56px); line-height: 1.1; margin: 0 0 12px; }
-.lede { font-size: clamp(18px, 2.5vw, 22px); color: var(--muted); max-width: 60ch; }
-.cta-row { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon.ico" />
+</head>
+<body>
+  <header class="site-header container">
+    <a class="brand" href="#home" aria-label="Nowak IP Group home">
+      <!-- If you don't have logo.png yet, you can temporarily remove the <img> line below -->
+      <img src="logo.png" alt="Nowak IP Group" class="logo" />
+      <span class="wordmark">Nowak IP Group</span>
+    </a>
+    <nav class="nav">
+      <a href="#services">Services</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact" class="btn">Contact</a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="icon-link" aria-label="LinkedIn">LinkedIn</a>
+    </nav>
+  </header>
 
-/* Buttons */
-.btn { display: inline-block; padding: 10px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); }
-.btn.primary { background: var(--brand); color: var(--brand-ink); font-weight: 600; }
-.btn.ghost { background: transparent; color: var(--text); }
-.btn:hover { filter: brightness(1.05); }
+  <main id="home">
+    <section class="hero container">
+      <h1>IP counsel that moves business forward.</h1>
+      <p class="lede">Patents • Trademarks • Disputes</p>
+      <div class="cta-row">
+        <a class="btn primary" href="#contact">Request a consult</a>
+        <a class="btn ghost" href="#services">Explore services</a>
+      </div>
+    </section>
 
-/* Sections */
-.section { padding: 48px 0; }
-.section h2 { font-size: 28px; margin: 0 0 12px; }
-.bullets { margin: 0; padding-left: 18px; color: var(--muted); }
+    <section id="services" class="section container">
+      <h2>Services</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Patent Litigation</h3>
+          <p>Strategic enforcement and defense aimed at business outcomes — from early case assessment to trial and appeal.</p>
+        </article>
+        <article class="card">
+          <h3>Trademarks &amp; Brand Protection</h3>
+          <p>Clearance, registration, and marketplace enforcement — including online anti-counterfeiting programs.</p>
+        </article>
+        <article class="card">
+          <h3>IP Strategy &amp; Counseling</h3>
+          <p>Portfolio development, licensing, freedom-to-operate, diligence for transactions, and risk mitigation.</p>
+        </article>
+      </div>
+    </section>
 
-/* Industry focus */
-.industries { margin-top: 18px; }
-.industries-title { font-size: 18px; margin: 0 0 6px; color: var(--text); opacity: 0.9; }
-.industry-tags { margin: 0; color: var(--muted); }
+    <section id="experience" class="section container">
+      <h2>Representative Experience</h2>
+      <ul class="bullets">
+        <li>Lead and co-lead counsel in complex patent disputes across U.S. district courts and the ITC.</li>
+        <li>Trademark enforcement and counterfeit takedowns across major e-commerce marketplaces.</li>
+        <li>Advising startups and public companies on IP strategy, transactions, and risk.</li>
+      </ul>
+      <div class="industries">
+        <h3 class="industries-title">Industry Focus</h3>
+        <p class="industry-tags">Electronics / Consumer Tech • Medical Devices / Life Sciences • Telecommunications • Retail / E-commerce • Consumer Goods / Hardware</p>
+      </div>
+    </section>
 
-/* Cards */
-.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 12px; }
-.card { background: var(--panel); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; padding: 18px; }
-.card h3 { margin: 0 0 6px; font-size: 20px; }
-.card p { margin: 0; color: var(--muted); }
+    <section id="contact" class="section container contact">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:info@your-domain-here">info@your-domain-here</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/" target="_blank" rel="noopener">Connect</a></p>
+      <p class="small">Do not send confidential or privileged information. This site is informational only and does not create an attorney-client relationship.</p>
+    </section>
+  </main>
 
-/* Contact */
-.contact .small { font-size: 13px; color: var(--muted); margin-top: 12px; }
-.contact a { color: var(--text); text-decoration: underline; text-underline-offset: 2px; }
-.contact a:hover { color: var(--link); }
+  <footer class="site-footer container">
+    <p>© <span id="year"></span> Nowak IP Group. All rights reserved.</p>
+  </footer>
 
-/* Footer */
-.site-footer { padding: 32px 0 60px; color: var(--muted); }
-
-/* Responsive tweaks */
-@media (max-width: 640px) {
-  .nav a { margin-left: 12px; }
-  .logo { height: 32px; }
-}
+  <script>
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
