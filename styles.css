@@ -2,9 +2,9 @@
 :root {
   --bg: #0b0d10;       /* page background */
   --panel: #12151a;    /* card/nav background */
-  --text: #e8eef7;     /* primary text */
+  --text: #e8eef7;     /* primary text (also logo color) */
   --muted: #a9b3c1;    /* secondary text */
-  --brand: #5da0ff;    /* accent */
+  --brand: #5da0ff;    /* accent (links/buttons if used) */
   --brand-ink: #0b1a2b;
   --link: #94c0ff;     /* link hover */
   --focus: #89b8ff;    /* focus ring color */
@@ -37,7 +37,6 @@ body {
 }
 .logo { height: 40px; width: auto; }
 .wordmark { font-weight: 700; letter-spacing: 0.2px; }
-
 .nav a { color: var(--text); text-decoration: none; margin-left: 18px; opacity: 0.9; }
 .nav a:hover { opacity: 1; }
 
@@ -48,39 +47,39 @@ a:focus, button:focus, .btn:focus {
 }
 
 /* -------------------- HERO -------------------- */
-.hero { padding: 78px 0 48px; }
+.hero { padding: 86px 0 54px; }
 
-/* Two columns: logo (fixed) + text (fluid) */
+/* Top-aligned logo that spans the height of a two-line headline */
 .hero-grid {
   display: grid;
-  grid-template-columns: 96px 1fr;   /* left column for logo */
-  gap: 20px;
-  align-items: center;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 28px;
+  align-items: start;               /* TOP align with first line (Option B) */
 }
 
-/* Force the hero logo smaller and inline with text */
-.hero-logo {
-  width: 130px !important;
-  height: auto !important;
-  display: block;
-}
-
-/* Extra safeguard in case classes differ */
-.hero .hero-grid > img:first-child {
-  width: 130px !important;
-  height: auto !important;
-  display: block;
-}
-
+/* Use a CSS variable for headline size so logo can scale to two lines */
 .hero h1 {
-  font-size: clamp(34px, 5.0vw, 52px);
-  line-height: 1.15;
-  margin: 0 0 10px;
+  --hero-fs: clamp(40px, 6vw, 62px);  /* adjust overall headline size here */
+  font-size: var(--hero-fs);
+  line-height: 1.12;                  /* compact, premium */
+  margin: 0 0 12px;
 }
+
+/* Make the logo as tall as ~two lines of the headline block */
+.hero-logo {
+  height: calc(var(--hero-fs) * 2.24);  /* 2 lines * line-height (≈1.12 * 2) */
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* Keep the text column from stretching too wide so wrapping is clean */
+.hero-grid > div { max-width: 32ch; }
+
 .lede {
   font-size: clamp(18px, 2.3vw, 20px);
   color: var(--muted);
-  max-width: 60ch;
+  margin: 2px 0 0;
 }
 
 /* -------------------- SECTIONS -------------------- */
@@ -154,13 +153,15 @@ a:focus, button:focus, .btn:focus {
   .about-photo { order: -1; margin-bottom: 12px; }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   .hero-grid {
-    grid-template-columns: 64px 1fr;
-    gap: 14px;
+    grid-template-columns: 1fr;
+    row-gap: 14px;
   }
-  .hero-logo,
-  .hero .hero-grid > img:first-child {
-    width: 64px !important;
+  .hero-logo {
+    height: auto;
+    width: 160px;              /* tidy, left-aligned on small screens */
+    margin-bottom: 2px;
   }
+  .hero-grid > div { max-width: 40ch; }
 }
