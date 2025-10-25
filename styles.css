@@ -28,23 +28,14 @@ body {
   justify-content: space-between;
   padding: 22px 0;
 }
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  color: var(--text);
-}
+.brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); }
 .logo { height: 40px; width: auto; }
 .wordmark { font-weight: 700; letter-spacing: 0.2px; }
 .nav a { color: var(--text); text-decoration: none; margin-left: 18px; opacity: 0.9; }
 .nav a:hover { opacity: 1; }
 
-/* Focus styles (accessibility) */
-a:focus, button:focus, .btn:focus {
-  outline: 3px solid var(--focus);
-  outline-offset: 2px;
-}
+/* Focus styles */
+a:focus, button:focus, .btn:focus { outline: 3px solid var(--focus); outline-offset: 2px; }
 
 /* -------------------- HERO -------------------- */
 .hero { padding: 86px 0 54px; }
@@ -53,8 +44,8 @@ a:focus, button:focus, .btn:focus {
 .hero-grid {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  column-gap: 32px;    /* space between logo and text */
-  align-items: start;  /* top-align with the first headline line (Option B) */
+  column-gap: 32px;          /* space between logo and text */
+  align-items: start;        /* top-align with first headline line */
 }
 
 /* Headline sizing (shared var so logo can sync to its height) */
@@ -63,14 +54,15 @@ a:focus, button:focus, .btn:focus {
   font-size: var(--hero-fs);
   line-height: 1.12;                  /* compact, premium */
   margin: 0 0 12px;
+  white-space: normal;                 /* ensure normal wrapping */
 }
 
-/* Constrain text width so headline wraps to two lines cleanly */
-.hero-grid > div { max-width: 24ch; }
+/* Make the text column wide enough for 2 lines (with the single <br/>) */
+.hero-grid > div { max-width: 36ch; }  /* ← widened from 24ch */
 
 /* Make the logo as tall as two headline lines (no overlap) */
 .hero-logo {
-  height: calc(var(--hero-fs) * 2.40);
+  height: calc(var(--hero-fs) * 2.30); /* 2 lines * ~1.15 line-height */
   width: auto;
   display: block;
   object-fit: contain;
@@ -113,23 +105,13 @@ a:focus, button:focus, .btn:focus {
 }
 .about-text p { margin-top: 0; color: var(--text); }
 .about-photo { display: grid; place-items: center; }
-
 .photo {
-  width: 220px;
-  height: 220px;
-  border-radius: 16px;
-  object-fit: cover;
+  width: 220px; height: 220px; border-radius: 16px; object-fit: cover;
   border: 1px solid rgba(255,255,255,0.08);
 }
 .photo-placeholder {
-  width: 220px;
-  height: 220px;
-  border-radius: 16px;
-  display: grid;
-  place-items: center;
-  background: var(--panel);
-  color: var(--muted);
-  border: 1px dashed rgba(255,255,255,0.18);
+  width: 220px; height: 220px; border-radius: 16px; display: grid; place-items: center;
+  background: var(--panel); color: var(--muted); border: 1px dashed rgba(255,255,255,0.18);
   font-size: 14px;
 }
 
@@ -155,14 +137,7 @@ a:focus, button:focus, .btn:focus {
 }
 
 @media (max-width: 640px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-    row-gap: 14px;
-  }
-  .hero-logo {
-    height: auto;
-    width: 160px;      /* neat, left-aligned on small screens */
-    margin-bottom: 2px;
-  }
+  .hero-grid { grid-template-columns: 1fr; row-gap: 14px; }
+  .hero-logo { height: auto; width: 160px; margin-bottom: 2px; }
   .hero-grid > div { max-width: 40ch; }
 }
