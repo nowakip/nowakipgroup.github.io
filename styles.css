@@ -67,7 +67,7 @@ a:focus, button:focus, .btn:focus {
 
 /* Extra safeguard in case classes differ */
 .hero .hero-grid > img:first-child {
-  width: 96px !important;
+  width: 130px !important;
   height: auto !important;
   display: block;
 }
