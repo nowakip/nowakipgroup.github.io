@@ -6,17 +6,14 @@
   --muted:#a9b3c1;
   --link:#94c0ff;
   --focus:#89b8ff;
-  /* Logo column a bit narrower so text gets more width */
-  --logo-col: 460px;   /* if it still wraps, try 450px */
-}
 
   /* Page margins / width */
   --page-max:1200px;
   --page-pad:28px;
 
-  /* Hero controls (tweak these 2 to taste) */
-  --logo-col:520px;     /* logo column width (try 540px, 560px…) */
-  --logo-mult:3.00;     /* logo height = hero font-size * this (try 3.06, 3.12…) */
+  /* Hero controls */
+  --logo-col:460px;    /* width of the logo column; 450–480px is a good range */
+  --logo-mult:3.00;    /* logo height = hero font-size * this (tune after margins) */
 }
 
 /* ============ Base ============ */
@@ -25,6 +22,15 @@ html,body{margin:0;padding:0}
 body{
   background:var(--bg);color:var(--text);
   font:16px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
+}
+
+/* Page container: centered, with comfy side padding */
+.container{
+  max-width: var(--page-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--page-pad);
+  padding-right: var(--page-pad);
 }
 
 /* ============ Header ============ */
@@ -44,19 +50,19 @@ a:focus,button:focus,.btn:focus{outline:3px solid var(--focus);outline-offset:2p
 
 /* Two rows: row1 = logo + headline, row2 = lede */
 .hero-grid{
-  display: grid;
+  display:grid;
   grid-template-columns: var(--logo-col) 1fr;
-  grid-template-rows: auto auto;
-  column-gap: 40px;          /* was larger; 36–44px is a good range */
-  align-items: start;
+  grid-template-rows:auto auto;
+  column-gap:40px;           /* gap between logo and text; 36–44px works well */
+  align-items:start;
 }
 
 /* Headline (the logo height keys off this) */
 .hero h1{
-  --hero-fs: clamp(38px, 5.6vw, 58px);  /* drop the max from 60px → 58px */
+  --hero-fs: clamp(38px, 5.6vw, 58px);  /* 58px max helps hold two clean lines */
   font-size: var(--hero-fs);
-  line-height: 1.12;
-  margin: 0;
+  line-height:1.12;
+  margin:0;
 }
 
 /* Place items explicitly and center row-1 items relative to each other */
@@ -67,15 +73,13 @@ a:focus,button:focus,.btn:focus{outline:3px solid var(--focus);outline-offset:2p
 /* Let the text column use the full available width */
 .hero-grid > div{max-width:none}
 
-/* Logo scaling — this is the knob that should visibly grow the art */
+/* Logo scaling — this is the knob that grows the artwork */
 .hero-logo{
-  height:calc(var(--hero-fs) * var(--logo-mult));
+  height: calc(var(--hero-fs) * var(--logo-mult));
   width:auto;
   max-width:none;
   display:block;
   object-fit:contain;
-  /* TEMP: add a faint outline to confirm the rule is applied; remove after checking */
-  outline:1px dashed rgba(255,255,255,.15);
 }
 
 /* Tagline */
