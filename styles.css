@@ -19,8 +19,8 @@ body {
   font: 16px/1.6 Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
-/* Wider container so the headline can stay on two lines */
-.container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+/* Wider container so the larger hero has room */
+.container { max-width: 1360px; margin: 0 auto; padding: 0 20px; }
 
 /* -------------------- HEADER -------------------- */
 .site-header {
@@ -44,10 +44,10 @@ a:focus, button:focus, .btn:focus { outline: 3px solid var(--focus); outline-off
 /* Two-row grid: Row 1 = logo + headline; Row 2 = lede only */
 .hero-grid {
   display: grid;
-  grid-template-columns: max-content 1fr; /* logo auto width, text gets the rest */
-  grid-template-rows: auto auto;          /* row1: logo+headline, row2: lede */
-  column-gap: 28px;
-  align-items: start;                      /* default; we'll center row-1 items individually */
+  grid-template-columns: 320px 1fr;   /* WIDER logo column */
+  grid-template-rows: auto auto;
+  column-gap: 40px;                   /* Push headline/lede further right */
+  align-items: start;
 }
 
 /* Headline sizing (logo height keys off this) */
@@ -55,24 +55,21 @@ a:focus, button:focus, .btn:focus { outline: 3px solid var(--focus); outline-off
   --hero-fs: clamp(38px, 5.6vw, 60px);
   font-size: var(--hero-fs);
   line-height: 1.12;
-  margin: 0;                 /* no bottom margin so row height = pure two-line block */
+  margin: 0;
   white-space: normal;
 }
 
-/* Place items in the grid explicitly */
-.hero-logo { grid-column: 1; grid-row: 1; }
-.hero-grid h1 { grid-column: 2; grid-row: 1; }
+/* Place items explicitly */
+.hero-logo { grid-column: 1; grid-row: 1; align-self: center; }
+.hero-grid h1 { grid-column: 2; grid-row: 1; align-self: center; }
 .lede { grid-column: 2; grid-row: 2; }
-
-/* Vertically center ONLY the row-1 items against each other */
-.hero-logo, .hero-grid h1 { align-self: center; }
 
 /* Let the text column use the full grid width (no narrow cap) */
 .hero-grid > div { max-width: none; }
 
-/* Make the logo as tall as the two-line headline block */
+/* Make the logo larger while keeping alignment with the two-line block */
 .hero-logo {
-  height: calc(var(--hero-fs) * 2.42);  /* tweak 2.38–2.46 to taste */
+  height: calc(var(--hero-fs) * 2.56);  /* was ~2.42 — larger logo */
   width: auto;
   max-width: none;
   display: block;
@@ -83,7 +80,7 @@ a:focus, button:focus, .btn:focus { outline: 3px solid var(--focus); outline-off
 .lede {
   font-size: clamp(18px, 2.3vw, 20px);
   color: var(--muted);
-  margin-top: 12px;          /* spacing below the two-line headline */
+  margin-top: 14px;
 }
 
 /* -------------------- SECTIONS -------------------- */
@@ -150,7 +147,7 @@ a:focus, button:focus, .btn:focus { outline: 3px solid var(--focus); outline-off
 
 @media (max-width: 640px) {
   .hero-grid { grid-template-columns: 1fr; grid-template-rows: auto auto; row-gap: 14px; }
-  .hero-logo { height: auto; width: 160px; margin-bottom: 2px; align-self: start; }
+  .hero-logo { height: auto; width: 180px; margin-bottom: 2px; align-self: start; }
   .hero-grid h1 { align-self: start; }
   .hero-grid > div { max-width: 40ch; }
 }
