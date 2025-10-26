@@ -19,8 +19,12 @@ body {
   font: 16px/1.6 Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
-/* Wider container so the larger hero has room */
-.container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+/* Better readable width */
+.container {
+  max-width: 1200px; /* restore ideal margins */
+  margin: 0 auto;
+  padding: 0 28px;  /* a little more breathing room on sides */
+}
 
 /* -------------------- HEADER -------------------- */
 .site-header {
