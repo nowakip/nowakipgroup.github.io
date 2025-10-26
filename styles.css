@@ -14,6 +14,9 @@
   /* Hero controls */
   --logo-col:500px;     /* width of the logo column; 450–520px is a good range */
   --logo-mult:2.95;     /* knob: logo height = hero font-size * this (try 2.90–3.40) */
+  --hero-fs: 3.15rem; /* try this instead of ~3.0 */
+}
+
 }
 
 /* ============ Base ============ */
@@ -53,12 +56,12 @@ a:focus,button:focus,.btn:focus{outline:3px solid var(--focus);outline-offset:2p
 }
 
 /* Two rows: row1 = logo + headline, row2 = lede */
-.hero-grid{
-  display:grid;
-  grid-template-columns: var(--logo-col) 1fr;
-  grid-template-rows:auto auto;
-  column-gap:44px;           /* gap between logo and text; 36–44px works well */
-  align-items:start;
+.hero-grid {
+  display: grid;
+  grid-template-columns: var(--logo-col) minmax(660px, 1fr);
+  align-items: center;
+  column-gap: 44px;
+  margin-top: 2rem;
 }
 
 }
