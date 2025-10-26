@@ -79,7 +79,7 @@ a:focus,button:focus,.btn:focus{outline:3px solid var(--focus);outline-offset:2p
   display:block;
   object-fit:contain;
   /* TEMP: add a faint outline to confirm the rule is applied; remove after checking */
-  /* outline:1px dashed rgba(255,255,255,.15); */
+  outline:1px dashed rgba(255,255,255,.15);
 }
 
 /* Tagline */
