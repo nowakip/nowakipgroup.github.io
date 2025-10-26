@@ -40,29 +40,31 @@ a:focus, button:focus, .btn:focus { outline: 3px solid var(--focus); outline-off
 /* -------------------- HERO -------------------- */
 .hero { padding: 86px 0 54px; }
 
-/* Grid: logo left, text right */
+/* Grid: give the logo a fixed column and the text plenty of room */
 .hero-grid {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  column-gap: 32px;          /* space between logo and text */
-  align-items: start;        /* top-align with first headline line */
+  grid-template-columns: 220px 1fr;    /* ← fixed logo column so text stays wide */
+  column-gap: 32px;
+  align-items: start;                  /* top-align with first headline line */
 }
 
 /* Headline sizing (shared var so logo can sync to its height) */
 .hero h1 {
-  --hero-fs: clamp(40px, 6vw, 62px);  /* global hero font-size */
+  --hero-fs: clamp(40px, 6vw, 62px);
   font-size: var(--hero-fs);
-  line-height: 1.12;                  /* compact, premium */
+  line-height: 1.12;
   margin: 0 0 12px;
-  white-space: normal;                 /* ensure normal wrapping */
+  white-space: normal;
 }
 
-/* Make the text column wide enough for 2 lines (with the single <br/>) */
-.hero-grid > div { max-width: 36ch; }  /* ← widened from 24ch */
+/* Make the text column wide enough for exactly two lines */
+.hero-grid > div {
+  max-width: clamp(42ch, 64vw, 50ch);  /* ← WIDER so it won’t split into 4–6 lines */
+}
 
 /* Make the logo as tall as two headline lines (no overlap) */
 .hero-logo {
-  height: calc(var(--hero-fs) * 2.30); /* 2 lines * ~1.15 line-height */
+  height: calc(var(--hero-fs) * 2.30); /* tweak to 2.26/2.34 to taste */
   width: auto;
   display: block;
   object-fit: contain;
