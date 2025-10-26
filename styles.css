@@ -30,7 +30,7 @@ body {
   padding: 22px 0;
 }
 .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); }
-.logo { height: 40px; width: auto; }
+.logo { height: 60px; width: auto; }
 .wordmark { font-weight: 700; letter-spacing: 0.2px; }
 .nav a { color: var(--text); text-decoration: none; margin-left: 18px; opacity: 0.9; }
 .nav a:hover { opacity: 1; }
