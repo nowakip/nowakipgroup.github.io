@@ -1,13 +1,13 @@
 /* Minimal, fast, and readable */
 :root {
-  --bg: #0b0d10;
-  --panel: #12151a;
-  --text: #e8eef7;
-  --muted: #a9b3c1;
-  --brand: #5da0ff;
+  --bg: #0b0d10;       /* page background */
+  --panel: #12151a;    /* card/nav background */
+  --text: #e8eef7;     /* primary text (and logo color) */
+  --muted: #a9b3c1;    /* secondary text */
+  --brand: #5da0ff;    /* optional accent */
   --brand-ink: #0b1a2b;
-  --link: #94c0ff;
-  --focus: #89b8ff;
+  --link: #94c0ff;     /* link hover */
+  --focus: #89b8ff;    /* focus ring color */
 }
 
 * { box-sizing: border-box; }
@@ -22,7 +22,7 @@ body {
 /* WIDER container so the headline can stay on two lines */
 .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
 
-/* Header */
+/* -------------------- HEADER -------------------- */
 .site-header {
   display: flex;
   align-items: center;
@@ -30,41 +30,42 @@ body {
   padding: 22px 0;
 }
 .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); }
-.logo { height: 60px; width: auto; }
+.logo { height: 40px; width: auto; }
 .wordmark { font-weight: 700; letter-spacing: 0.2px; }
 .nav a { color: var(--text); text-decoration: none; margin-left: 18px; opacity: 0.9; }
 .nav a:hover { opacity: 1; }
 
+/* Focus styles */
 a:focus, button:focus, .btn:focus { outline: 3px solid var(--focus); outline-offset: 2px; }
 
 /* -------------------- HERO -------------------- */
 .hero { padding: 86px 0 54px; }
 
-/* Fixed logo column + wide text column */
+/* Flexible logo column + wide text column */
 .hero-grid {
   display: grid;
-  grid-template-columns: max-content 1fr;  /* NEW: logo column grows to fit logo */
+  grid-template-columns: max-content 1fr; /* logo column grows to fit logo, text gets the rest */
   column-gap: 28px;
-  align-items: start;                       /* top-align with first headline line */
+  align-items: start;                      /* top-align with first headline line */
 }
 
-/* Headline sizing (logo height syncs to this) */
+/* Headline sizing (logo height keys off this) */
 .hero h1 {
-  --hero-fs: clamp(38px, 5.6vw, 60px);   /* tiny reduction helps fit elegantly */
+  --hero-fs: clamp(38px, 5.6vw, 60px);  /* small tweak so two lines look elegant across widths */
   font-size: var(--hero-fs);
   line-height: 1.12;
   margin: 0 0 12px;
   white-space: normal;
 }
 
-/* Let the text column use the full grid space (no narrow cap) */
+/* Let the text column use the full grid width (no narrow cap) */
 .hero-grid > div { max-width: none; }
 
-/* Logo as tall as two lines of the headline */
+/* Make the logo as tall as the two-line headline block */
 .hero-logo {
-  height: calc(var(--hero-fs) * 2.42);   /* as tall as the two-line headline */
+  height: calc(var(--hero-fs) * 2.42);  /* adjust 2.38–2.46 to taste */
   width: auto;
-  max-width: none;                        /* NEW: prevent width clamping */
+  max-width: none;                       /* don't clamp width */
   display: block;
   object-fit: contain;
 }
@@ -97,7 +98,7 @@ a:focus, button:focus, .btn:focus { outline: 3px solid var(--focus); outline-off
 .card h3 { margin: 0 0 6px; font-size: 20px; }
 .card p { margin: 0; color: var(--muted); }
 
-/* About */
+/* -------------------- ABOUT -------------------- */
 .about-wrap {
   display: grid;
   grid-template-columns: 1.3fr 0.7fr;
@@ -106,6 +107,7 @@ a:focus, button:focus, .btn:focus { outline: 3px solid var(--focus); outline-off
 }
 .about-text p { margin-top: 0; color: var(--text); }
 .about-photo { display: grid; place-items: center; }
+
 .photo {
   width: 220px; height: 220px; border-radius: 16px; object-fit: cover;
   border: 1px solid rgba(255,255,255,0.08);
@@ -116,18 +118,18 @@ a:focus, button:focus, .btn:focus { outline: 3px solid var(--focus); outline-off
   font-size: 14px;
 }
 
-/* Industries */
+/* -------------------- INDUSTRIES -------------------- */
 .industries { margin-top: 18px; }
 .industries-title { font-size: 18px; margin: 0 0 6px; color: var(--text); opacity: 0.9; }
 .industry-tags { margin: 0; color: var(--muted); }
 
-/* Contact */
+/* -------------------- CONTACT -------------------- */
 .contact .small { font-size: 13px; color: var(--muted); margin-top: 12px; }
 .contact .muted { color: var(--muted); }
 .contact a { color: var(--text); text-decoration: underline; text-underline-offset: 2px; }
 .contact a:hover { color: var(--link); }
 
-/* Footer */
+/* -------------------- FOOTER -------------------- */
 .site-footer { padding: 32px 0 60px; color: var(--muted); text-align: left; }
 .site-footer .sep { opacity: 0.5; margin: 0 6px; }
 
