@@ -13,7 +13,7 @@
 
   /* Hero controls */
   --logo-col:460px;    /* width of the logo column; 450–480px is a good range */
-  --logo-mult:3.00;    /* logo height = hero font-size * this (tune after margins) */
+  --logo-mult:3.18;    /* logo height = hero font-size * this (tune after margins) */
 }
 
 /* ============ Base ============ */
