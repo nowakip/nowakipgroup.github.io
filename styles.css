@@ -46,7 +46,7 @@ a:focus, button:focus, .btn:focus { outline: 3px solid var(--focus); outline-off
   display: grid;
   grid-template-columns: 320px 1fr;   /* WIDER logo column */
   grid-template-rows: auto auto;
-  column-gap: 40px;                   /* Push headline/lede further right */
+  column-gap: 48px;                   /* Push headline/lede further right */
   align-items: start;
 }
 
@@ -69,7 +69,7 @@ a:focus, button:focus, .btn:focus { outline: 3px solid var(--focus); outline-off
 
 /* Make the logo larger while keeping alignment with the two-line block */
 .hero-logo {
-  height: calc(var(--hero-fs) * 2.56);  /* was ~2.42 — larger logo */
+  height: calc(var(--hero-fs) * 2.60);  /* was ~2.42 — larger logo */
   width: auto;
   max-width: none;
   display: block;
