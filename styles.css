@@ -50,7 +50,7 @@ a:focus, button:focus, .btn:focus { outline: 3px solid var(--focus); outline-off
 /* Two-row grid: Row 1 = logo + headline; Row 2 = lede */
 .hero-grid {
   display: grid;
-  grid-template-columns: 420px 1fr; /* wider logo column */
+  grid-template-columns: 500px 1fr; /* wider logo column */
   grid-template-rows: auto auto;
   column-gap: 56px;                /* push headline/lede to the right */
   align-items: start;
@@ -75,7 +75,7 @@ a:focus, button:focus, .btn:focus { outline: 3px solid var(--focus); outline-off
 
 /* Hero logo scaling (tied to headline size) */
 .hero-logo {
-  height: calc(var(--hero-fs) * 2.62); /* tweak in 0.02 steps if desired */
+  height: calc(var(--hero-fs) * 3.0); /* tweak in 0.02 steps if desired */
   width: auto;
   max-width: none;
   display: block;
