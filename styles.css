@@ -14,8 +14,11 @@
   /* Hero controls */
   --logo-col:500px;     /* width of the logo column; 450–520px is a good range */
   --logo-mult:3.25;     /* knob: logo height = hero font-size * this (try 2.90–3.40) */
-  --hero-fs: 2.75rem;   /* headline font size — this is the one you tweak */
+  --hero-fs: 2.75rem;     /* your current heading size */
+  --logo-h: 180px;        /* NEW: absolute cap for logo height (independent of hero fs) */
+  --hero-offset-y: 8px;   /* NEW: nudge the heading downward a bit */
 }
+
 
 }
 
@@ -57,18 +60,19 @@ a:focus,button:focus,.btn:focus{outline:3px solid var(--focus);outline-offset:2p
 
 /* Two rows: row1 = logo + headline, row2 = lede */
 .hero-grid{
-  display:grid;
-  grid-template-columns: var(--logo-col) minmax(620px, 1fr); /* keep headline wide */
-  align-items:center;
-  column-gap:44px;
-  margin-top:2rem;
+  display: grid;
+  grid-template-columns: var(--logo-col) minmax(620px, 1fr);
+  align-items: start;        /* instead of center */
+  column-gap: 44px;
+  margin-top: 2rem;
 }
 
-/* Headline uses the shared var from :root */
-.hero h1{
+.hero-logo{ align-self: center; }         /* logo centers vertically in its column */
+.hero-grid h1{
   font-size: var(--hero-fs);
-  line-height:1.12;
-  margin:0;
+  line-height: 1.12;
+  margin: 0;
+  transform: translateY(var(--hero-offset-y)); /* sit a bit lower than the logo */
 }
 
 /* Place items explicitly and center row-1 items */
@@ -76,16 +80,15 @@ a:focus,button:focus,.btn:focus{outline:3px solid var(--focus);outline-offset:2p
 .hero-grid h1{grid-column:2;grid-row:1;align-self:center}
 .lede{grid-column:2;grid-row:2}
 
-/* HERO LOGO — never overflow the logo column */
+/* HERO LOGO — independent sizing + no overflow */
 .hero .hero-logo{
-  width:100%;
-  max-width:100%;
-  height:auto;
-  max-height: calc(var(--hero-fs) * var(--logo-mult));
-  display:block;
-  object-fit:contain;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: var(--logo-h);   /* decoupled from --hero-fs */
+  display: block;
+  object-fit: contain;
 }
-
 
 /* Tagline */
 .lede{
