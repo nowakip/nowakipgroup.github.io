@@ -14,10 +14,6 @@
   /* Hero controls */
   --logo-col:460px;     /* width of the logo column; 450–520px is a good range */
   --logo-mult:3.10;     /* knob: logo height = hero font-size * this (try 2.90–3.40) */
-
-  /* NEW: masked hero logo settings */
-  --logo-color: var(--muted); /* A2 choice: light gray ink for the logo */
-  --logo-ar: 3.05;            /* aspect ratio (width/height) of the cropped logo */
 }
 
 /* ============ Base ============ */
@@ -80,49 +76,14 @@ a:focus,button:focus,.btn:focus{outline:3px solid var(--focus);outline-offset:2p
 /* Let the text column use the full available width */
 .hero-grid > div{max-width:none}
 
-/* ============ HERO LOGO: shared sizing + mask/fallback ============ */
-
-/* Shared sizing (both masked box and fallback <img>) */
+/* ============ HERO LOGO (simple <img>) ============ */
 .hero .hero-logo{
   height: calc(var(--hero-fs) * var(--logo-mult));
+  width: auto;
   max-width: none;
   max-height: none;
   display: block;
-}
-
-/* Fallback <img> (default visible) */
-.hero-logo--img{
-  width:auto;
-  object-fit:contain;
-}
-
-/* Masked box (hidden by default; enabled via @supports) */
-.hero-logo--mask{
-  display:none;                /* becomes display:block when mask is supported */
-}
-
-/* Prefer mask where supported (WebKit + standard) */
-@supports (-webkit-mask-image: url("")) or (mask-image: url("")){
-  .hero-logo--img{ display:none; }  /* hide fallback when mask works */
-
-  .hero-logo--mask{
-    display:block;
-    aspect-ratio: var(--logo-ar);
-    width:auto;
-
-    /* Ink color for the logo shape */
-    background-color: var(--logo-color);
-
-    /* Use cropped PNG as a mask (cache-busted via ?v=2 in HTML) */
-    -webkit-mask-image: url("logo-hero.png?v=2");
-            mask-image: url("logo-hero.png?v=2");
-    -webkit-mask-repeat:no-repeat;
-            mask-repeat:no-repeat;
-    -webkit-mask-position:center;
-            mask-position:center;
-    -webkit-mask-size:contain;
-            mask-size:contain;
-  }
+  object-fit: contain;
 }
 
 /* Tagline */
