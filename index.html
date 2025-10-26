@@ -14,7 +14,7 @@
   <meta property="og:description" content="IP counsel that moves business forward. Patents • Trademarks • Disputes." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://your-domain-here/" />
-  <meta property="og:image" content="/logo.png" />
+  <meta property="og:image" content="/logo-hero.png" />
 
   <!-- Favicons (add files later; link tags are harmless until then) -->
   <link rel="icon" href="favicon.ico" />
@@ -25,14 +25,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=14">
+  <!-- Cache-busted stylesheet so the newest CSS always loads -->
+  <link rel="stylesheet" href="styles.css?v=16">
 </head>
 <body>
   <!-- Accessibility: keyboard users can jump to content -->
 
   <header class="site-header container" role="banner">
     <a class="brand" href="#home" aria-label="Nowak IP Group home">
-      <!-- Optional logo; remove <img> if you don't have logo.png yet -->
       <img src="logo.png" alt="Nowak IP Group" class="logo" />
       <span class="wordmark">Nowak IP Group</span>
     </a>
@@ -47,20 +47,20 @@
 
   <main id="home" class="main" role="main">
     <!-- HERO -->
-   <section class="hero container">
-  <div class="hero-grid">
-<img
-  src="logo-hero-tight.png?v=3"
-  srcset="logo-hero-tight.png?v=3 1x, logo-hero-tight@2x.png?v=3 2x"
-  alt="Nowak IP Group"
-  class="hero-logo"
-/>
-    <div>
-      <h1 id="hero-title">IP counsel that moves<br />business forward.</h1>
-      <p class="lede">Patents • Trademarks • Disputes</p>
-    </div>
-  </div>
-</section>
+    <section class="hero container">
+      <div class="hero-grid">
+        <!-- Use the tightly-cropped hero logo -->
+        <img
+          src="logo-hero.png?v=1"
+          alt="Nowak IP Group"
+          class="hero-logo"
+        />
+        <div>
+          <h1 id="hero-title">IP counsel that moves<br />business forward.</h1>
+          <p class="lede">Patents • Trademarks • Disputes</p>
+        </div>
+      </div>
+    </section>
 
     <!-- SERVICES -->
     <section id="services" class="section container" aria-labelledby="services-title">
@@ -149,4 +149,3 @@
   </script>
 </body>
 </html>
-
