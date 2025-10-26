@@ -13,7 +13,7 @@
 
   /* Hero controls */
   --logo-col:460px;    /* width of the logo column; 450–480px is a good range */
-  --logo-mult:4.0;    /* logo height = hero font-size * this (tune after margins) */
+  --logo-mult:3.18;    /* logo height = hero font-size * this (tune after margins) */
 }
 
 /* ============ Base ============ */
@@ -73,13 +73,23 @@ a:focus,button:focus,.btn:focus{outline:3px solid var(--focus);outline-offset:2p
 /* Let the text column use the full available width */
 .hero-grid > div{max-width:none}
 
-/* Logo scaling — this is the knob that grows the artwork */
-.hero-logo{
-  height: calc(var(--hero-fs) * var(--logo-mult));
-  width:auto;
-  max-width:none;
-  display:block;
-  object-fit:contain;
+/* Make sure this fully overrides previous rules */
+.hero .hero-logo {
+  /* choose ONE of the two height strategies: */
+
+  /* A) Clean, responsive, tied to headline size */
+  height: calc(var(--hero-fs) * 3.18);
+
+  /* B) Or: pixel/viewport based clamp (uncomment to try instead) */
+  /* height: clamp(160px, 18vw, 280px); */
+
+  width: auto;
+  max-width: none;
+  display: block;
+  object-fit: contain;
+
+  /* TEMP: outline to confirm this rule is active; remove after */
+  outline: 1px dashed rgba(255,255,255,.18);
 }
 
 /* Tagline */
