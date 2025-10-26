@@ -8,22 +8,25 @@
   --brand-ink: #0b1a2b;
   --link: #94c0ff;
   --focus: #89b8ff;
+
+  /* Page width + side padding (controls margins) */
+  --page-max: 1200px;  /* comfortable reading width */
+  --page-pad: 28px;    /* side breathing room */
 }
 
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
-
 body {
   background: var(--bg);
   color: var(--text);
   font: 16px/1.6 Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
-/* Better readable width */
+/* Robust container: keeps nice margins at ALL widths */
 .container {
-  max-width: 1200px; /* restore ideal margins */
-  margin: 0 auto;
-  padding: 0 28px;  /* a little more breathing room on sides */
+  width: min(var(--page-max), calc(100% - 2*var(--page-pad)));
+  margin-inline: auto;
+  padding-inline: 0; /* padding baked into width formula above */
 }
 
 /* -------------------- HEADER -------------------- */
@@ -34,7 +37,7 @@ body {
   padding: 22px 0;
 }
 .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); }
-.logo { height: 40px; width: auto; }
+.logo  { height: 40px; width: auto; }
 .wordmark { font-weight: 700; letter-spacing: 0.2px; }
 .nav a { color: var(--text); text-decoration: none; margin-left: 18px; opacity: 0.9; }
 .nav a:hover { opacity: 1; }
@@ -47,13 +50,13 @@ a:focus, button:focus, .btn:focus { outline: 3px solid var(--focus); outline-off
 /* Two-row grid: Row 1 = logo + headline; Row 2 = lede */
 .hero-grid {
   display: grid;
-  grid-template-columns: 420px 1fr;   /* WIDER logo column */
+  grid-template-columns: 420px 1fr; /* wider logo column */
   grid-template-rows: auto auto;
-  column-gap: 56px;                   /* push headline/lede to the right */
+  column-gap: 56px;                /* push headline/lede to the right */
   align-items: start;
 }
 
-/* Headline sizing (logo height keys off this) */
+/* Headline (logo height keys off this) */
 .hero h1 {
   --hero-fs: clamp(38px, 5.6vw, 60px);
   font-size: var(--hero-fs);
@@ -63,16 +66,16 @@ a:focus, button:focus, .btn:focus { outline: 3px solid var(--focus); outline-off
 }
 
 /* Place items explicitly */
-.hero-logo { grid-column: 1; grid-row: 1; align-self: center; }
-.hero-grid h1 { grid-column: 2; grid-row: 1; align-self: center; }
-.lede { grid-column: 2; grid-row: 2; }
+.hero-logo     { grid-column: 1; grid-row: 1; align-self: center; }
+.hero-grid h1  { grid-column: 2; grid-row: 1; align-self: center; }
+.lede          { grid-column: 2; grid-row: 2; }
 
-/* Use full width for text column */
+/* Text column uses full available width */
 .hero-grid > div { max-width: none; }
 
-/* Larger logo (still aligned to two-line block) */
+/* Hero logo scaling (tied to headline size) */
 .hero-logo {
-  height: calc(var(--hero-fs) * 2.62);  /* increase/decrease in 0.02 steps to taste */
+  height: calc(var(--hero-fs) * 2.62); /* tweak in 0.02 steps if desired */
   width: auto;
   max-width: none;
   display: block;
@@ -105,7 +108,7 @@ a:focus, button:focus, .btn:focus { outline: 3px solid var(--focus); outline-off
   padding: 18px;
 }
 .card h3 { margin: 0 0 6px; font-size: 20px; }
-.card p { margin: 0; color: var(--muted); }
+.card p  { margin: 0; color: var(--muted); }
 
 /* -------------------- ABOUT -------------------- */
 .about-wrap {
@@ -130,7 +133,7 @@ a:focus, button:focus, .btn:focus { outline: 3px solid var(--focus); outline-off
 /* -------------------- INDUSTRIES -------------------- */
 .industries { margin-top: 18px; }
 .industries-title { font-size: 18px; margin: 0 0 6px; color: var(--text); opacity: 0.9; }
-.industry-tags { margin: 0; color: var(--muted); }
+.industry-tags  { margin: 0; color: var(--muted); }
 
 /* -------------------- CONTACT -------------------- */
 .contact .small { font-size: 13px; color: var(--muted); margin-top: 12px; }
@@ -150,7 +153,7 @@ a:focus, button:focus, .btn:focus { outline: 3px solid var(--focus); outline-off
 
 @media (max-width: 640px) {
   .hero-grid { grid-template-columns: 1fr; grid-template-rows: auto auto; row-gap: 14px; }
-  .hero-logo { height: auto; width: 180px; margin-bottom: 2px; align-self: start; }
+  .hero-logo  { height: auto; width: 180px; margin-bottom: 2px; align-self: start; }
   .hero-grid h1 { align-self: start; }
   .hero-grid > div { max-width: 40ch; }
 }
