@@ -62,7 +62,7 @@ a:focus, button:focus, .btn:focus { outline: 3px solid var(--focus); outline-off
 
 /* Logo as tall as two lines of the headline */
 .hero-logo {
-  height: calc(var(--hero-fs) * 2.30); /* adjust 2.26–2.34 to taste */
+  height: calc(var(--hero-fs) * 2.42); /* adjust 2.26–2.34 to taste */
   width: auto;
   display: block;
   object-fit: contain;
