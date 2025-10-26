@@ -1,13 +1,13 @@
 /* Minimal, fast, and readable */
 :root {
-  --bg: #0b0d10;       /* page background */
-  --panel: #12151a;    /* card/nav background */
-  --text: #e8eef7;     /* primary text (and logo color) */
-  --muted: #a9b3c1;    /* secondary text */
-  --brand: #5da0ff;    /* optional accent */
+  --bg: #0b0d10;
+  --panel: #12151a;
+  --text: #e8eef7;
+  --muted: #a9b3c1;
+  --brand: #5da0ff;
   --brand-ink: #0b1a2b;
-  --link: #94c0ff;     /* link hover */
-  --focus: #89b8ff;    /* focus ring color */
+  --link: #94c0ff;
+  --focus: #89b8ff;
 }
 
 * { box-sizing: border-box; }
@@ -19,7 +19,8 @@ body {
   font: 16px/1.6 Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
-.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+/* WIDER container so the headline can stay on two lines */
+.container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
 
 /* Header */
 .site-header {
@@ -34,35 +35,34 @@ body {
 .nav a { color: var(--text); text-decoration: none; margin-left: 18px; opacity: 0.9; }
 .nav a:hover { opacity: 1; }
 
-/* Focus styles */
 a:focus, button:focus, .btn:focus { outline: 3px solid var(--focus); outline-offset: 2px; }
 
 /* -------------------- HERO -------------------- */
 .hero { padding: 86px 0 54px; }
 
-/* Grid: fixed logo column + generously wide text column */
+/* Fixed logo column + wide text column */
 .hero-grid {
   display: grid;
-  grid-template-columns: 220px minmax(560px, 1fr); /* ← give the headline room for 2 lines */
-  column-gap: 36px;
-  align-items: start;                                /* top-align with first headline line */
+  grid-template-columns: 200px 1fr;   /* <- logo stays the same width, text gets the rest */
+  column-gap: 24px;                   /* slightly tighter gap to free width for text */
+  align-items: start;                  /* top-align with first headline line */
 }
 
-/* Headline sizing (shared var so logo can match its height) */
+/* Headline sizing (logo height syncs to this) */
 .hero h1 {
-  --hero-fs: clamp(40px, 6vw, 62px);
+  --hero-fs: clamp(38px, 5.6vw, 60px);   /* tiny reduction helps fit elegantly */
   font-size: var(--hero-fs);
   line-height: 1.12;
   margin: 0 0 12px;
   white-space: normal;
 }
 
-/* Let the text column use the full grid width (remove narrow cap) */
+/* Let the text column use the full grid space (no narrow cap) */
 .hero-grid > div { max-width: none; }
 
-/* Make the logo as tall as two headline lines */
+/* Logo as tall as two lines of the headline */
 .hero-logo {
-  height: calc(var(--hero-fs) * 2.40); /* tweak to 2.26 / 2.34 to taste */
+  height: calc(var(--hero-fs) * 2.30); /* adjust 2.26–2.34 to taste */
   width: auto;
   display: block;
   object-fit: contain;
