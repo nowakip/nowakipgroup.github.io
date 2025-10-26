@@ -1,13 +1,13 @@
 /* Minimal, fast, and readable */
 :root {
-  --bg: #0b0d10;       /* page background */
-  --panel: #12151a;    /* card/nav background */
-  --text: #e8eef7;     /* primary text (and logo color) */
-  --muted: #a9b3c1;    /* secondary text */
-  --brand: #5da0ff;    /* optional accent */
+  --bg: #0b0d10;
+  --panel: #12151a;
+  --text: #e8eef7;
+  --muted: #a9b3c1;
+  --brand: #5da0ff;
   --brand-ink: #0b1a2b;
-  --link: #94c0ff;     /* link hover */
-  --focus: #89b8ff;    /* focus ring color */
+  --link: #94c0ff;
+  --focus: #89b8ff;
 }
 
 * { box-sizing: border-box; }
@@ -20,7 +20,7 @@ body {
 }
 
 /* Wider container so the larger hero has room */
-.container { max-width: 1360px; margin: 0 auto; padding: 0 20px; }
+.container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
 
 /* -------------------- HEADER -------------------- */
 .site-header {
@@ -35,18 +35,17 @@ body {
 .nav a { color: var(--text); text-decoration: none; margin-left: 18px; opacity: 0.9; }
 .nav a:hover { opacity: 1; }
 
-/* Focus styles */
 a:focus, button:focus, .btn:focus { outline: 3px solid var(--focus); outline-offset: 2px; }
 
 /* -------------------- HERO -------------------- */
 .hero { padding: 86px 0 54px; }
 
-/* Two-row grid: Row 1 = logo + headline; Row 2 = lede only */
+/* Two-row grid: Row 1 = logo + headline; Row 2 = lede */
 .hero-grid {
   display: grid;
-  grid-template-columns: 320px 1fr;   /* WIDER logo column */
+  grid-template-columns: 420px 1fr;   /* WIDER logo column */
   grid-template-rows: auto auto;
-  column-gap: 48px;                   /* Push headline/lede further right */
+  column-gap: 56px;                   /* push headline/lede to the right */
   align-items: start;
 }
 
@@ -64,19 +63,19 @@ a:focus, button:focus, .btn:focus { outline: 3px solid var(--focus); outline-off
 .hero-grid h1 { grid-column: 2; grid-row: 1; align-self: center; }
 .lede { grid-column: 2; grid-row: 2; }
 
-/* Let the text column use the full grid width (no narrow cap) */
+/* Use full width for text column */
 .hero-grid > div { max-width: none; }
 
-/* Make the logo larger while keeping alignment with the two-line block */
+/* Larger logo (still aligned to two-line block) */
 .hero-logo {
-  height: calc(var(--hero-fs) * 2.60);  /* was ~2.42 — larger logo */
+  height: calc(var(--hero-fs) * 2.62);  /* increase/decrease in 0.02 steps to taste */
   width: auto;
   max-width: none;
   display: block;
   object-fit: contain;
 }
 
-/* Tagline (row 2) */
+/* Tagline */
 .lede {
   font-size: clamp(18px, 2.3vw, 20px);
   color: var(--muted);
