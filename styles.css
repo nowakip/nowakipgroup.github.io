@@ -14,7 +14,7 @@
   /* Hero controls */
   --logo-col:500px;     /* width of the logo column; 450–520px is a good range */
   --logo-mult:2.95;     /* knob: logo height = hero font-size * this (try 2.90–3.40) */
-  --hero-fs: 3.10rem;   /* headline font size — this is the one you tweak */
+  --hero-fs: 2.90rem;   /* headline font size — this is the one you tweak */
 }
 
 }
