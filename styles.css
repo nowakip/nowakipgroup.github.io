@@ -19,7 +19,7 @@ body {
   font: 16px/1.6 Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
-/* WIDER container so the headline can stay on two lines */
+/* Wider container so the headline can stay on two lines */
 .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
 
 /* -------------------- HEADER -------------------- */
@@ -41,40 +41,49 @@ a:focus, button:focus, .btn:focus { outline: 3px solid var(--focus); outline-off
 /* -------------------- HERO -------------------- */
 .hero { padding: 86px 0 54px; }
 
-/* Flexible logo column + wide text column */
+/* Two-row grid: Row 1 = logo + headline; Row 2 = lede only */
 .hero-grid {
   display: grid;
-  grid-template-columns: max-content 1fr; /* Center logo vertically against the two-line headline */
+  grid-template-columns: max-content 1fr; /* logo auto width, text gets the rest */
+  grid-template-rows: auto auto;          /* row1: logo+headline, row2: lede */
   column-gap: 28px;
-  align-items: center;                      /* top-align with first headline line */
+  align-items: start;                      /* default; we'll center row-1 items individually */
 }
 
 /* Headline sizing (logo height keys off this) */
 .hero h1 {
-  --hero-fs: clamp(38px, 5.6vw, 60px);  /* small tweak so two lines look elegant across widths */
+  --hero-fs: clamp(38px, 5.6vw, 60px);
   font-size: var(--hero-fs);
   line-height: 1.12;
-  margin: 0 0 12px;
+  margin: 0;                 /* no bottom margin so row height = pure two-line block */
   white-space: normal;
 }
+
+/* Place items in the grid explicitly */
+.hero-logo { grid-column: 1; grid-row: 1; }
+.hero-grid h1 { grid-column: 2; grid-row: 1; }
+.lede { grid-column: 2; grid-row: 2; }
+
+/* Vertically center ONLY the row-1 items against each other */
+.hero-logo, .hero-grid h1 { align-self: center; }
 
 /* Let the text column use the full grid width (no narrow cap) */
 .hero-grid > div { max-width: none; }
 
 /* Make the logo as tall as the two-line headline block */
 .hero-logo {
-  height: calc(var(--hero-fs) * 2.42);  /* adjust 2.38–2.46 to taste */
+  height: calc(var(--hero-fs) * 2.42);  /* tweak 2.38–2.46 to taste */
   width: auto;
-  max-width: none;                       /* don't clamp width */
+  max-width: none;
   display: block;
   object-fit: contain;
 }
 
-/* Tagline */
+/* Tagline (row 2) */
 .lede {
   font-size: clamp(18px, 2.3vw, 20px);
   color: var(--muted);
-  margin: 2px 0 0;
+  margin-top: 12px;          /* spacing below the two-line headline */
 }
 
 /* -------------------- SECTIONS -------------------- */
@@ -140,7 +149,8 @@ a:focus, button:focus, .btn:focus { outline: 3px solid var(--focus); outline-off
 }
 
 @media (max-width: 640px) {
-  .hero-grid { grid-template-columns: 1fr; row-gap: 14px; }
-  .hero-logo { height: auto; width: 160px; margin-bottom: 2px; }
+  .hero-grid { grid-template-columns: 1fr; grid-template-rows: auto auto; row-gap: 14px; }
+  .hero-logo { height: auto; width: 160px; margin-bottom: 2px; align-self: start; }
+  .hero-grid h1 { align-self: start; }
   .hero-grid > div { max-width: 40ch; }
 }
