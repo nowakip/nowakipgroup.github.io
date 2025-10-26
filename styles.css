@@ -12,9 +12,14 @@
   --page-pad:28px;
 
   /* Hero controls */
-  --logo-col:460px;     /* width of the logo column; 450–520px is a good range */
-  --logo-mult:2.50;     /* << knob: logo height = hero font-size * this (try 2.90–3.40) */
+  --logo-col:460px;
+  --logo-mult:3.10;
+
+  /* NEW: hero logo color + aspect ratio (tweak AR if needed) */
+  --logo-color: var(--muted);   /* A2: muted gray #A9B3C1 */
+  --logo-ar: 3.05;              /* aspect ratio (width / height) of your logo art */
 }
+
 
 /* ============ Base ============ */
 *{box-sizing:border-box}
@@ -77,14 +82,24 @@ a:focus,button:focus,.btn:focus{outline:3px solid var(--focus);outline-offset:2p
 .hero-grid > div{max-width:none}
 
 /* Hero logo sizing — driven by the single knob: --logo-mult */
-.hero .hero-logo{
-  height: calc(var(--hero-fs) * var(--logo-mult));
+/* Hero logo as a color-tinted mask (transparent bg, light gray ink) */
+.hero .hero-logo {
+  height: calc(var(--hero-fs) * var(--logo-mult)); /* same sizing knob as before */
+  aspect-ratio: var(--logo-ar);
   width: auto;
+  display: block;
+
+  /* Color the logo with brand-muted gray */
+  background-color: var(--logo-color);
+
+  /* Use the cropped PNG as a mask (no white box, edges stay sharp) */
+  -webkit-mask: url("logo-hero.png") center / contain no-repeat;
+          mask: url("logo-hero.png") center / contain no-repeat;
+
+  /* Make sure nothing constrains it */
   max-width: none;
   max-height: none;
-  display: block;
   object-fit: contain;
-  /* outline: 1px dashed rgba(255,255,255,.18);  remove or re-enable for debugging */
 }
 
 /* Tagline */
