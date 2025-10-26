@@ -12,14 +12,13 @@
   --page-pad:28px;
 
   /* Hero controls */
-  --logo-col:460px;
-  --logo-mult:3.10;
+  --logo-col:460px;     /* width of the logo column; 450–520px is a good range */
+  --logo-mult:3.10;     /* knob: logo height = hero font-size * this (try 2.90–3.40) */
 
-  /* NEW: hero logo color + aspect ratio (tweak AR if needed) */
-  --logo-color: var(--muted);   /* A2: muted gray #A9B3C1 */
-  --logo-ar: 3.05;              /* aspect ratio (width / height) of your logo art */
+  /* NEW: masked hero logo settings */
+  --logo-color: var(--muted); /* A2 choice: light gray ink for the logo */
+  --logo-ar: 3.05;            /* aspect ratio (width/height) of the cropped logo */
 }
-
 
 /* ============ Base ============ */
 *{box-sizing:border-box}
@@ -81,25 +80,49 @@ a:focus,button:focus,.btn:focus{outline:3px solid var(--focus);outline-offset:2p
 /* Let the text column use the full available width */
 .hero-grid > div{max-width:none}
 
-/* Hero logo sizing — driven by the single knob: --logo-mult */
-/* Hero logo as a color-tinted mask (transparent bg, light gray ink) */
-.hero .hero-logo {
-  height: calc(var(--hero-fs) * var(--logo-mult)); /* same sizing knob as before */
-  aspect-ratio: var(--logo-ar);
-  width: auto;
-  display: block;
+/* ============ HERO LOGO: shared sizing + mask/fallback ============ */
 
-  /* Color the logo with brand-muted gray */
-  background-color: var(--logo-color);
-
-  /* Use the cropped PNG as a mask (no white box, edges stay sharp) */
-  -webkit-mask: url("logo-hero.png") center / contain no-repeat;
-          mask: url("logo-hero.png") center / contain no-repeat;
-
-  /* Make sure nothing constrains it */
+/* Shared sizing (both masked box and fallback <img>) */
+.hero .hero-logo{
+  height: calc(var(--hero-fs) * var(--logo-mult));
   max-width: none;
   max-height: none;
-  object-fit: contain;
+  display: block;
+}
+
+/* Fallback <img> (default visible) */
+.hero-logo--img{
+  width:auto;
+  object-fit:contain;
+}
+
+/* Masked box (hidden by default; enabled via @supports) */
+.hero-logo--mask{
+  display:none;                /* becomes display:block when mask is supported */
+}
+
+/* Prefer mask where supported (WebKit + standard) */
+@supports (-webkit-mask-image: url("")) or (mask-image: url("")){
+  .hero-logo--img{ display:none; }  /* hide fallback when mask works */
+
+  .hero-logo--mask{
+    display:block;
+    aspect-ratio: var(--logo-ar);
+    width:auto;
+
+    /* Ink color for the logo shape */
+    background-color: var(--logo-color);
+
+    /* Use cropped PNG as a mask (cache-busted via ?v=2 in HTML) */
+    -webkit-mask-image: url("logo-hero.png?v=2");
+            mask-image: url("logo-hero.png?v=2");
+    -webkit-mask-repeat:no-repeat;
+            mask-repeat:no-repeat;
+    -webkit-mask-position:center;
+            mask-position:center;
+    -webkit-mask-size:contain;
+            mask-size:contain;
+  }
 }
 
 /* Tagline */
