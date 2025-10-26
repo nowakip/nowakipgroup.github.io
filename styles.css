@@ -12,8 +12,8 @@
   --page-pad:28px;
 
   /* Hero controls */
-  --logo-col:460px;     /* width of the logo column; 450–520px is a good range */
-  --logo-mult:3.10;     /* knob: logo height = hero font-size * this (try 2.90–3.40) */
+  --logo-col:500px;     /* width of the logo column; 450–520px is a good range */
+  --logo-mult:2.95;     /* knob: logo height = hero font-size * this (try 2.90–3.40) */
 }
 
 /* ============ Base ============ */
@@ -57,8 +57,10 @@ a:focus,button:focus,.btn:focus{outline:3px solid var(--focus);outline-offset:2p
   display:grid;
   grid-template-columns: var(--logo-col) 1fr;
   grid-template-rows:auto auto;
-  column-gap:40px;           /* gap between logo and text; 36–44px works well */
+  column-gap:44px;           /* gap between logo and text; 36–44px works well */
   align-items:start;
+}
+
 }
 
 /* Headline uses the shared var */
@@ -77,11 +79,16 @@ a:focus,button:focus,.btn:focus{outline:3px solid var(--focus);outline-offset:2p
 .hero-grid > div{max-width:none}
 
 /* ============ HERO LOGO (simple <img>) ============ */
+/* HERO LOGO — never overflow the logo column */
 .hero .hero-logo{
-  height: calc(var(--hero-fs) * var(--logo-mult));
-  width: auto;
-  max-width: none;
-  max-height: none;
+  /* Let the column width cap the logo width */
+  width: 100%;
+  max-width: 100%;
+
+  /* Let height grow, but cap it by your knob */
+  height: auto;
+  max-height: calc(var(--hero-fs) * var(--logo-mult));
+
   display: block;
   object-fit: contain;
 }
