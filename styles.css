@@ -44,9 +44,9 @@ a:focus, button:focus, .btn:focus { outline: 3px solid var(--focus); outline-off
 /* Flexible logo column + wide text column */
 .hero-grid {
   display: grid;
-  grid-template-columns: max-content 1fr; /* logo column grows to fit logo, text gets the rest */
+  grid-template-columns: max-content 1fr; /* Center logo vertically against the two-line headline */
   column-gap: 28px;
-  align-items: start;                      /* top-align with first headline line */
+  align-items: center;                      /* top-align with first headline line */
 }
 
 /* Headline sizing (logo height keys off this) */
